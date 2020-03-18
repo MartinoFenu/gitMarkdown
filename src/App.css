@@ -1,0 +1,246 @@
+:root {
+  --previewer-width: 50%;
+  --previewer-height: 100%;
+  --editor-width: 49%;
+  --editor-height: 100%;
+  --resizer-left: 0;
+  --resiser-top: 0;
+}
+body {
+  background-color: #1d1e22;
+  color: #d3d3d3;
+}
+.editor-wrapper {
+  order: 2;
+  box-sizing: border-box;
+  padding: 0.7em;
+  display: inline-block;
+  vertical-align: top;
+  width: var(--editor-width);
+  overflow-y: hidden;
+  position:relative;
+}
+.previewer-wrapper {
+  order: 3;
+  display: inline-block;
+  width: var(--previewer-width);
+  height: 100%;
+  padding: 0.7em;
+  box-sizing: border-box;
+}
+.wrapper-row .editor-wrapper, .wrapper-row .previewer-wrapper { width: 100%; }
+.wrapper-row .editor-wrapper { height: var(--editor-height); }
+.wrapper-row .previewer-wrapper { height: var(--previewer-height); }
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+.wrapper > * {
+  flex: 1 100%;
+}
+.editor-wrapper, .previewer-wrapper {
+  flex: 1 auto;
+}
+header {
+  order: 1;
+  min-height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 0;
+}
+#editor {
+  background-color: #1d1e22;
+  color: #d3d3d3;
+  border: none;
+  height: 100%;
+  min-height: 85vh;
+  display: block;
+  resize: none;
+  width: 100%;
+}
+.wrapper-row #editor { min-height: 250px; }
+.resizer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #d3d3d3;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+}
+.wrapper-row .resizer {
+  width: 100%;
+  height: 5px;
+  cursor: row-resize;
+}
+#preview {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+}
+#preview img { width: 100%; }
+.btnSplit.active { background-color: #d3d3d3; }
+.btnSplit.active .blockIcon {border-color: #1d1e22;}
+ .blockIcon {
+  height: 0px;
+  width: 15px;
+  margin: 2px;
+  border: 5px solid #d3d3d3;
+}
+.btnSplit {
+  border: none;
+  background: none;
+  cursor: pointer;
+  min-height: 38px;
+  min-width: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btnSplit:hover { background-color: #d3d3d3; }
+.btnSplit:hover .blockIcon { border-color: #1d1e22; }
+.columnView { margin: 0 0.7em; }
+.columnView.btnSplit {
+  display: flex;
+  flex-direction: row;
+}
+.columnView .blockIcon {
+  height: 15px;
+  width: 0px;
+}
+.Input {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3em 0;
+}
+.Input input  {
+  background-color: #1d1e22;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.5em;
+}
+.toolbar-wrapper {
+  background-color: #d3d3d3;
+  border: 0.2em solid #adadad;
+  max-width: 550px;
+}
+.button_container {
+  margin: 0.5em 0;
+  text-align: center;
+}
+.EditorActions {text-align: right;}
+.btn {
+  border: none;
+  background-color: transparent;
+}
+.clickableIcon {
+  font-size: 1.3em;
+  cursor: pointer;
+  color: #050709;
+}
+.clickableIcon:hover {
+  color: #4b6319;
+}
+.btn.action {
+  font-size: 1em;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 0.2em;
+  margin: 0 0.5em;
+  background-color: transparent;
+  border: 0.1em solid #ffffff;
+}
+.btn.action:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+.btn.cancel {
+  color: #aa0000;
+  border: 0.1em solid #aa0000;
+}
+.btn.cancel:hover { background-color: #aa0000; }
+.customSelect {position: relative;}
+.customOptionsBox {
+  position: absolute;
+  z-index: 100;
+  background-color: #d3d3d3;
+}
+.options { display: block; }
+.options:hover { background-color: #1d1e22;}
+.Modal {
+  position: fixed;
+  background-color: #1d1e22;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 300px;
+  width: 100%;
+  z-index: 110;
+  padding: 1em;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+.closed { display: none; }
+.ModalClose {
+  position: absolute;
+  top: 0;
+  right: 0.5em;
+  z-index: 500;
+  font-size: 1.5em
+}
+.Backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.error {
+  display: block;
+  color: #AF0000;
+}
+.flashMessage {
+  position: absolute;
+  background-color: #1d1e22;
+  left: 10px;
+  z-index: 110;
+}
+.EditorActions {
+  position: relative;
+}
+footer {
+  order: 4;
+  width: 100%;
+  text-align: center;
+  padding-top: 1em;
+  height: 2em;
+}
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0 0.3em;
+  box-sizing: border-box;
+}
+.clickable:hover, a:hover { color: #dc2a2a; }
+a {color: #1e8bc3;}
+.cookieBanner {
+  width: 100%;
+  position: absolute;
+  top: 0.2em;
+  text-align: center;
+}
+code {
+  word-wrap: break-word;
+  word-break: break-word;
+  display: inline-block;
+  white-space: pre-wrap;
+}
+h1 {word-break: break-all;}
